@@ -1,7 +1,10 @@
 {
   "name": "listed-companies-native-app",
   "nativescript": {
-    "id": "org.nativescript.listedcompaniesnativeapp"
+    "id": "com.vaaniga.indian.listedcompanies.app",
+    "tns-android": {
+      "version": "6.5.0"
+    }
   },
   "version": "0.0.0",
   "scripts": {
