@@ -1,12 +1,9 @@
 <div class="row">
-  <div *ngFor="let company of fmcgCompanies; index as i;" >
-    <div>
-      <div>
-        <h4>{{company.companyName}}</h4>
-      </div>
-      <div>
-        Brands associated with <span style="color:brown; font-weight: bold;">{{company.companyName}}</span>
-      </div>
+  <h3>{{title}}</h3>
+  <div class="row" *ngFor = "let products of productMap | keyvalue; index as i;">
+    <div class="col-lg-12">
+      {{products.key}} - 
+      <span *ngFor = "let product of products.value"> {{product}} </span>
     </div>
   </div>
 </div>

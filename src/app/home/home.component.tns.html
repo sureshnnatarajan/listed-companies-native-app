@@ -1,6 +1,6 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <ActionBar [title]="title"></ActionBar>
-<StackLayout  class="p-20">
+<!-- <StackLayout  class="p-20">
     <Label text="{{ title }}!" class="h1 text-center" textWrap="true"></Label>
     <ListView [items]="fmcgCompanies">
         <ng-template let-item="item">
@@ -8,5 +8,15 @@
             <Label [text]="item.companyName"></Label>
           </GridLayout>
         </ng-template>
-      </ListView>
+    </ListView>
+</StackLayout> -->
+<StackLayout>
+    <ListView [items]="productMap | keyvalue">
+        <ng-template let-item="item">
+            <GridLayout columns="50, auto, *" rows="50, auto, *" >
+                <Label row="0" col="0" [text]="item.key"></Label>
+                <Label row="0" col="1" [text]="item.value"></Label>
+            </GridLayout>
+        </ng-template>
+    </ListView>
 </StackLayout>

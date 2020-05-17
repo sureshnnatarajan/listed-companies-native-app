@@ -9,8 +9,9 @@ import { VaanigaServiceService } from '../vaaniga-service.service';
 export class HomeComponent implements OnInit {
   
   title = "FMCG - Companies";
-
   fmcgCompanies : any;
+
+  productMap = new Map<String, any[]>();
 
   constructor(private vaanigaServiceService: VaanigaServiceService) {
   }
@@ -27,6 +28,28 @@ export class HomeComponent implements OnInit {
                           this.fmcgCompanies = res.results;
                         }, 
                         err => {},
-                        () => {});
+                        () => {
+                          this.loadProductData();
+                        });
+  }
+
+  loadProductData() {
+    for (let company of this.fmcgCompanies) {
+      this.vaanigaServiceService.getProductsForCompanies(company.companyName)
+                                .subscribe(
+                                  res => {
+                                    this.productMap.set(company.companyName, this.extractProduct(res));
+                                  }
+                                )
+    }
+  }
+
+  extractProduct(res: any) {
+    let productArray = [];
+    for (let product of res.results) {
+      console.log(product.productName);
+      productArray.push(product.productName);
+    }
+    return productArray;
   }
 }
